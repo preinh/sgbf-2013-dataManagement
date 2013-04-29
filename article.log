@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  28 APR 2013 23:45
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  29 APR 2013 10:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -591,8 +591,13 @@ Underfull \hbox (badness 2005) in paragraph at lines 51--51
  []
 
 
-Underfull \hbox (badness 1629) in paragraph at lines 51--51
-\OT1/phv/m/n/9 (ON). The Uni-ver-sity od Brasilia (UnB) de-ployed the
+Underfull \hbox (badness 1430) in paragraph at lines 51--51
+\OT1/phv/m/n/9 BRA-SIS. Blue tri-an-gles are sta-tions de-ployed by the
+ []
+
+
+Underfull \hbox (badness 1331) in paragraph at lines 51--51
+\OT1/phv/m/n/9 Na-tional Ob-ser-va-tory (ON). The Uni-ver-sity of Brasilia
  []
 
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <9> not available
@@ -680,13 +685,13 @@ File: images/dataSteps.png Graphic file (type png)
 
 <use images/dataSteps.png>
 Package pdftex.def Info: images/dataSteps.png used on input line 92.
-(pdftex.def)             Requested size: 224.75386pt x 284.52756pt.
+(pdftex.def)             Requested size: 179.80693pt x 227.62204pt.
 
 Underfull \hbox (badness 2237) in paragraph at lines 98--99
 \OT1/phv/m/n/9 mod-els, fil-tered seis-mo-grams, dis-per-sion curves and
  []
 
-
+[2 <./images/dataFlow.png> <./images/dataSteps.png>]
 Underfull \hbox (badness 2662) in paragraph at lines 102--103
 []\OT1/phv/m/n/9 Which is the best way to care about all of these
  []
@@ -702,7 +707,7 @@ Underfull \hbox (badness 2865) in paragraph at lines 102--103
 v/b/n/9 Se-man-tic
  []
 
-<images/datacenter.png, id=12, 1258.7025pt x 786.94pt>
+<images/datacenter.png, id=19, 1258.7025pt x 786.94pt>
 File: images/datacenter.png Graphic file (type png)
 
 <use images/datacenter.png>
@@ -713,7 +718,7 @@ Underfull \hbox (badness 1005) in paragraph at lines 107--107
 \OT1/phv/m/n/9 by two mainly ser-vices. The sec-ond layer is where
  []
 
-[2 <./images/dataFlow.png>]
+
 Underfull \hbox (badness 1783) in paragraph at lines 116--117
 \OT1/phv/m/n/9 and com-ply the best prac-tices in seis-mo-log-i-cal data
  []
@@ -743,24 +748,24 @@ Underfull \hbox (badness 7030) in paragraph at lines 135--136
 \OT1/phv/m/n/9 www.seiscomp3.org/wiki/doc (last ac-cessed 20 April
  []
 
-[3 <./images/dataSteps.png> <./images/datacenter.png>] (./article.aux) ) 
+[3 <./images/datacenter.png>] (./article.aux) ) 
 Here is how much of TeX's memory you used:
  2444 strings out of 493488
  33338 string characters out of 3141326
- 97475 words of memory out of 3000000
+ 95475 words of memory out of 3000000
  5682 multiletter control sequences out of 15000+200000
  30226 words of font info for 56 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,13n,45p,962b,246s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/l
-ocal/texlive/2012/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/20
-12/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/201
-2/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2012/
-texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2012/texmf-d
-ist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/local/texlive/2012/texmf-dist/fo
-nts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/typ
-e1/urw/helvetic/uhvro8a.pfb>
-Output written on article.pdf (3 pages, 2142954 bytes).
+ 38i,13n,45p,962b,248s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/local/texlive/2012/texmf-d
+ist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2012/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/ur
+w/helvetic/uhvb8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/helve
+tic/uhvbo8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/helvetic/uh
+vr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.p
+fb>
+Output written on article.pdf (3 pages, 2143004 bytes).
 PDF statistics:
  44 PDF objects out of 1000 (max. 8388607)
  27 compressed objects within 1 object stream
