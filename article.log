@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  29 APR 2013 10:26
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  29 APR 2013 11:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -752,11 +752,11 @@ Underfull \hbox (badness 7030) in paragraph at lines 135--136
 Here is how much of TeX's memory you used:
  2444 strings out of 493488
  33338 string characters out of 3141326
- 95475 words of memory out of 3000000
+ 95467 words of memory out of 3000000
  5682 multiletter control sequences out of 15000+200000
  30226 words of font info for 56 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,13n,45p,962b,248s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,13n,45p,963b,248s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2012/texmf-d
 ist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2012/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/
@@ -765,7 +765,7 @@ w/helvetic/uhvb8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/helve
 tic/uhvbo8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/helvetic/uh
 vr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.p
 fb>
-Output written on article.pdf (3 pages, 2143004 bytes).
+Output written on article.pdf (3 pages, 2142982 bytes).
 PDF statistics:
  44 PDF objects out of 1000 (max. 8388607)
  27 compressed objects within 1 object stream

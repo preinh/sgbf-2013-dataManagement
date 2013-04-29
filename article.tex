@@ -13,11 +13,11 @@
 BRAzilian Integrated Seismological Network}
 
 % Setting the authors
-\author{Bruno Colla\c{c}o, Jackson Calhau, Marlon Pirchiner, Sergio Jr. S. Fachin, Marcelo
+\author{Bruno Colla\c{c}o, Marlon Pirchiner, Jackson Calhau, Sergio Jr. S. Fachin, Marcelo
 Assump\c{c}\~{a}o, IAG/IEE-USP Seismological Center, Brazil}
 
 % Setting the headings
-\headauthor{Pirchiner, Collaço, Calhau et al.}
+\headauthor{Collaço, Pirchiner et al.}
 \headtitle{Seismological Data Management}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -43,7 +43,7 @@ After some IRIS (Incorporated Research Institutes for Seismology) workshops, the
 
 BRASIS is the most important project in which the SC is envolved since 2009, when the brazilian oil company PETROBRAS approved its funding. BRASIS is part of a bigger project carried out by more three other institutions that are deploying the brazilian permanent seismological network, something that the country never had before (earlier projects were local or regional temporary experiments). The locations of the stations which were already deployed can be seen in Figure 1. 
 
-For the acquisition, real-time processing and data dissemination, the SC has chosen the german SeisComP3 as the main software running in its datacenter for many reasons: "no" cost; open source; use of GNU/Linux operating system; possibility of local maintenance; participation in future developments; and framework platform to easily develop local tools.
+For the acquisition, real-time processing and data dissemination, the SC has chosen the german SeisComP3 as the main software running in its data center for many reasons: "no" cost; open source; use of GNU/Linux operating system; possibility of local maintenance; participation in future developments; and framework platform to easily develop local tools.
 
 \begin{figure}[h!]
 \centering
@@ -51,7 +51,7 @@ For the acquisition, real-time processing and data dissemination, the SC has cho
 \caption[Figure 1]{Actual deployment status of the brazilian seismological network: red triangles are stations from BRASIS. Blue triangles are stations deployed by the Rio Grande do Norte Federal University (UFRN). The yellow triangles along the coast are stations from the National Observatory (ON). The University of Brasilia (UnB) deployed the stations represented by the green triangles. }
 \end{figure}
 
-Since May 2011 to April 2013, the BRASIS network has detected about 600 events with magnitudes between 4 and 7.2, most of them at the Andean region. 75\% of the events with magnitudes 5+ were located with less than 15km error when compared with the NEIC catalog. The automated magnitudes were also computed with an error of  $ \pm $ 0.35. Regional brazilian earthquakes were not located automatically because a magnitude 4+ did not occur yet. However, smaller events are being detected manually. The SC also mantains a catalog of the earthquakes that occur in Brazil. This catalog is open and accessable through the SC website at \textit{www.sismo.iag.usp.br/portal}, where one can also find information about the stations and retrieve its data. Furthermore,  a \textit {GeoServer} instance is running at the SC's datacenter, offering both station and earthquake catalog in raster formats, at \textit{www.sismo.iag.usp.br/geoserver}.
+Since May 2011 to April 2013, the BRASIS network has detected about 600 events with magnitudes between 4 and 7.2, most of them at the Andean region. 75\% of the events with magnitudes 5+ were located with less than 15km error when compared with the NEIC catalog. The automated magnitudes were also computed with an error of  $ \pm $ 0.35. Regional brazilian earthquakes were not located automatically because a magnitude 4+ did not occur yet. However, smaller events are being detected manually. The SC also mantains a catalog of the earthquakes that occur in Brazil. This catalog is open and accessable through the SC website at \textit{www.sismo.iag.usp.br/portal}, where one can also find information about the stations and retrieve its data. Furthermore,  a \textit {GeoServer} instance is running at the SC's data center, offering both station and earthquake catalog in raster formats, at \textit{www.sismo.iag.usp.br/geoserver}.
 
 \section{Data Life Cycle at the Seismological Center}
 
@@ -73,16 +73,16 @@ The steps of a waveform life cycle (Figure 3) can be separated in three differen
 
 \textbf{b) \textit{Curation}}
 \begin{itemize}
-\item \textit{Ingestion:} waveform data arrives at the datacenter in a propetary format. Then, it is extracted wth acquisition logs and converted to an open format (SEED). The station metadata is added at this step, to describe it in the same open standard (dataless SEED format;
+\item \textit{Ingestion:} waveform data arrives at the data center in a propetary format. Then, it is extracted with acquisition logs and converted to an open format (SEED). The station metadata is added at this step, to describe it in the same open standard (dataless SEED format);
 \item \textit{Quality Control:} acquisition logs like GPS lock timing, data gaps and noise evaluation (power spectral density plots) are made to garantee the quality of the acquired data;
-\item \textit{Data Dissemination and Access:} both miniSEED and datalessSEED archives are served for free access in real-time or on demand by the SC's SEEDLink and ArcLink Serves at \textit{seisrequest.iag.usp.br} (port 18000 for SEEDLink and 18001 for ArcLink);
+\item \textit{Data Dissemination and Access:} both miniSEED and datalessSEED archives are served for free access in real-time or on demand by the SC's SEEDLink and ArcLink Servers at \textit{seisrequest.iag.usp.br} (port 18000 for SEEDLink and 18001 for ArcLink);
 \item \textit{Real Time Processing:} the SeisComP3 system processes all the data that is being acquired in real-time. When an event is detected, the system runs its automated locators and magnitude calculators. The product, an event in the QuakeML format is stored at the database with its associated objects: picks, phase arrivals, origins, agency code, etc;
 \item \textit{Revision:} later, an analyst review each event detection to refine its location;
 \end{itemize}
 
 \textbf{c) \textit{Preservation}}
 \begin{itemize}
-\item \textit{Hardware:} all the systems at the SC's datacenter run on hardware prepared for redundancy;
+\item \textit{Hardware:} all the systems at the SC's data center run on hardware prepared for redundancy;
 \item\textit{Storage:} all the SC's data products are stored in a RAID 5 dedicated storage;
 \item\textit{Long Term:} all the SC's data products are open and are also being stored and the IRIS DMC servers;
 \end{itemize}
@@ -97,7 +97,7 @@ The steps of a waveform life cycle (Figure 3) can be separated in three differen
 
 Seismologists together with students when are working on their researches uses and also generates a lot of seismological objects like picks, amplitude readings, earth models, filtered seismograms, dispersion curves and tomographic maps among others. When the work in cooperation is needed in a distributed way or not, the problem to describe who did what is still open and the best solution is not easy to find. 
 
-Figure 4 illustrates a schematic representation of the data infrastructure installed at the SC's datacenter. However, some questions were not answered yet.
+Figure 4 illustrates a schematic representation of the data infrastructure installed at the SC's data center. However, some questions were not answered yet.
 
 Which is the best way to care about all of these seismological \textbf {related and distributed data}? How to manage all these processes and how to catch the \textbf {provenance} of these objects correctly? \textbf {Semantic} technology could be useful for this task? If so, how to implement semantic issues on this case study? In this context, does it make any sense to move towards a \textbf {virtual observatory} concept?
 
@@ -138,6 +138,6 @@ SeisComP3.org (2011). SeisComP 3 documentation; www.seiscomp3.org/wiki/doc (last
 
 \section{Acknowledgments}
 
-We would like to thank PETROBRAS for funding the BRASIS Project and also the SC's staff, specially Marcelo Assumpção for the support and trust.
+We would like to thank PETROBRAS, specially Gilmar V. Bueno, for funding the BRASIS Project and also the SC's staff, for the support and trust.
 
 \end{document}
