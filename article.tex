@@ -4,11 +4,12 @@
 % Package with format specifications for the 9th CISBGf
 \usepackage{cisbgf}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % MANDATORY PARAMETERS
 
 % Setting the title
-\title{Seismological Data Management of BRASIS -
+\title{Data Management of BRASIS -
 BRAzilian Integrated Seismological Network}
 
 % Setting the authors
@@ -27,205 +28,116 @@ Assump\c{c}\~{a}o, Centro de Sismologia - IAG/IEE - USP, Brazil }
 
 \begin{abstract}
 
-Agora se pode usar açentos sém múitos problemas!!
-áéíóú âêîôû àèìòù çÇ ãÃ
-
-This paper discusses the benefits of jointly inverting for inelastic absorption and convolution
-in daily processing flows. Efficiency and stability are shown to be mainly a consequence of a 
-proper treatment of the (quasi) null space associated with the combination of these two processes rather
-than to the original signal to noise ratio available.
-For the sake of clarity, singular value decomposition is used for discussing and 
-constructing the pseudo-inverse for the combined process. A simplified assumption of a time-dependent
-absorption model is used. 
+Historically, the brazilian seismology never had a strategic and solidified vision about how its data should be acquired, evaluated, stored and made available. Without good data management systems, good quality data acquired can be lost foverer, more time can be spent in querying and preparing datasets for analyses and also local and international colaboration will probably be reduced, in other words: a lot of data will never become scientific knowledge. With the emergence of BRASIS (Pirchiner et al, 2011) besides the significantly increase in the amount of data being acquired at the IAG/IEE-USP Seismological Center (SC), a chance was opened to implement a suitable data management plan to cover this shortcoming. This work describes the efforts of the SC to set up a seismology data management system which addresses data life cycle as it has been discussed by the international community.
 
 \end{abstract}
 
 \section{Introduction}
 
-Seismic processing is divided into many independent steps. Each one of these steps deals 
-with different processes seismic waves undergo before being recorded.
-The reason for treating a particular process independently may be related to the need for 
-focusing and optimizing the results with a proper choice of 
-parameters, resources, etc. However, some of these steps involve the inversion of an operator in an ill 
-posed/conditioned problem and this may require a laborious handling of 
-the stability which can be achieved via the knowledge of the spectrum of the 
-associated operator. Usually this is a trial and error method performed 
-until an acceptable signal to noise ratio is achieved. 
+Digital seismology started at SC at the early 1990's. Several temporary seismological experiments have been carried out in many areas of the Brazilian shield. For many years, a large amount of data obtained was stored on various media and in different formats, making the use of this data by other institutions very complicated. In 2008, those data issues emerges unsustainable: a lot of data stored in old tapes were not readable anymore, hard disks crashed and the mistaken decision to store only earthquake data (to save disk space) made some kind of studies (eg. ambient noise tomography) impossible. It was clear that something needed to be done to preserve the data still useful. 
 
-Deconvolution and absorption compensation are examples of this class of processes. The proper choice of
-a white noise level may be essential for the stability in the deconvolution and
-the level of amplification in high frequencies is critical for absorption compensation.
-Unfortunately, these two processes cannot be optimally treated in a step by 
-step way. Since the null space of the combined process is generally not simply related
-to the null space of the individual processes it may be worth to adopt a unified
-approach. This is specially critical when signal to noise ratio is low.
-
-Usually, absorption is treated after deconvolution when the signal to noise ratio has already
-been degraded in the high frequency range due to an apparently optimal choice of white noise. That the level
-of white noise is not optimal is not easily seen until one effectively tries to recover the high 
-frequency portion of the spectrum as in the absorption compensation.
-
-A very common practice is to break absorption into attenuation and phase leaving the attenuation compensation
-for a post-stack step where it is supposed that the signal to noise ratio has been enhanced. This approach is 
-artificial and do not help seismic processing pre-stack steps like velocity analysis to reach a higher
-level of resolution. It is shown here that pre-stack compensation of absorption may be done with an easy control
-of stability in conjunction with deconvolution providing a better suited data. 
+After some IRIS (Incorporated Research Institutes for Seismology) workshops, the SC started to assemble SEED (Standard for the Exchange of Earthquake Data) volumes to be stored at IRIS. Furthermore, much time was spent translating field sheets into metadata archives which contain the site and equipment information. This hard work brought experience to SC on how to care of seismological data. At the end of 2009, all data of 15 years of deployment was stored and made available at the IRIS Data Management Center unde ther BL network code, accessible for everyone by using a wide range of tools.
 
 
-\section{A joint operator for deconvolution and absorption}
+\section{The BRASIS Project}
 
-A seismic trace $s(t)$ can be described as the convolution of a pulse $p(t)$ with an earth
-impulsive response $e(t)$ that may be decomposed into a local reflectivity $r(t)$ and 
-a causal absorption filter $A(t,\tau)$ in the following way, 
-\begin{equation}
- s(t)\,=\,p(t)\ast \int_0^{\infty}A(t,\tau)r(\tau)d\tau
-\end{equation}
-with $t$ and $\tau$ standing for current and travel times and
-$\ast$ is convolution. This expression may be rewritten as,
-\begin{equation}
- s(t)\,=\int_0^{\infty}\left[ \int_0^{\infty}p(t-t')A(t',\tau)dt'\right] r(\tau)d\tau
-\end{equation}
-where the joint operator of convolution and absorption is inside brackets.
+BRASIS is the most important project in which the SC is envolved since 2009, when the brazilian oil company PETROBRAS approved its funding. BRASIS is part of a bigger project carried out by more three other institutions that are deploying the brazilian permanent seismological network, something that the country never had before (earlier projects were local or regional temporary experiments). The locations of the stations which were already deployed can be seen in Figure 1. 
 
-A discrete version of the equation above can be written as follows,
-\begin{equation}
- \vec s = \mathbf{P}\mathbf{A}\, \vec r
-\end{equation}
-where $\vec s$ has the samples of the recorded trace, $\mathbf{P}$ is a low diagonal matrix with the
-samples of the causal pulse $p_i$ displayed in the columns as,
-\begin{equation}
- P_{nm}\,=\,p_{n-m}\,\, ,
-\end{equation}
-and $\mathbf{A}$ is also a low diagonal matrix representing the causal effect 
-of absorption for a given travel time $\tau_m$ as,
-\begin{equation}
- A_{nm}\,=\,\mathcal{A}_{n,\tau_m},
-\end{equation}
-with $\mathcal{A}$ based in a phenomenological model for absorption here taken 
-from Futtermann's absorption model (1962) expressed as,
-\begin{equation}
- \mathcal{A}(t,\tau)\,=\,\int_{-\infty}^{\infty}e^{2\pi i ft}e^{-\frac{\pi f\tau}{Q}\left(1 + \frac{2i}{\pi}
-\log{f/f_0}\right)}df \,\,\, ,
-\end{equation}
-parametrized by the quality factor $Q$ and a reference frequency $f_0$.
-
-The joint operator for convolution and absorption is also causal, with a discrete representation 
-as a low diagonal matrix exhibiting filtered versions of the pulse in columns, each column associated 
-to a different travel time.
-
-
-
-\section{A pseudo-inverse for the processes}
-
-Deconvolution and absorption compensation are often characterized by an ill posed and/or an ill
-conditioned inversion problem. They demand some kind of regularization which can be easily made via
-singular value decomposition (SVD) (1965) of the associated matrix. A common approach 
-consists of grouping singular values according to their magnitude so as to apply a particular treatment 
-to each one. For example, there could be a subset of numerically stable (larger) singular values, a 
-subset of numerically unstable singular values (quasi null), and a null space. A pseudo-inverse is commonly
-build with the inversion of the former, a dumped or controlled inversion of the second group, and the 
-same null space. 
-
-Deconvolution and absorption compensation usually do not share the same set of singular vectors in which case
-an optimal pseudo-inverse for the combined process would be easily constructed after treating each process
-separately. More precisely, given the SVD of the convolution operator $\mathbf{P}\,=\,\mathbf{U}_P\,\Lambda_P\,\mathbf{V}^H_P$ and
-the absorption operator $\mathbf{A}\,=\,\mathbf{U}_A\,\Lambda_A\,\mathbf{V}^H_A$, the requirement for successfully 
-treating the operator $\mathbf{PA}$ via the analysis of $\mathbf{P}$ and $\mathbf{A}$ separatelly would be that 
-$\mathbf{V}^H_P\,\mathbf{U}_A\,=\,\mathbf{I}$ where $\mathbf{I}$ is the identity. In this case 
-$\mathbf{PA}\,=\,\mathbf{U}_P\,\Lambda_P\,\Lambda_A\,\mathbf{V}^H_A$ and an optimal subdivision of subspaces holds
-for both operators since $ \Lambda_{PA}\,=\,\Lambda_P\,\Lambda_A$.
-
-An analysis of current seismic processing practice based on what was said above would conclude that any attempt to
-regularize one of the processes independently will likely be amplifying the instability of the other. In other words,
-most of the hard work required for defining an acceptable absorption compensation could be avoided if deconvolution 
-had not been applied before. Building a pseudo-inverse for the joint operator for convolution and absorption brings 
-the advantage of optimally controlling the sensitive subspaces and reducing cycle time.
-
-\section{A real data example}
-
-For the sake of comparison, figure 1 shows a small window of a stacked section where \textit{a}) absorption
-compensation was applied after stacking, \textit{b}) a 1-40 Hz bandpass filter was applied on the section 
-shown on \textit{a}), and \textit{c}) deconvolution and absorption compensation were applied as a single 
-pre-stack process. 
-
-Figure 1\textit{a} shows the usual signal to noise ratio one obtains
-without a strict control of amplification of the higher frequency range of the spectrum. In this case, 
-signal has its bandwidth mostly restricted to the low end of the spectrum and noise (multiples) spectrum
-is broader. 
-
-In the step by step processing, absorption compensation is often followed by bandpass filters in an 
-attempt to attenuate the high frequency components of the noise as shown in Figure 1\textit{b}. 
-This procedure does not alter the signal to noise ratio on the bandwidth of the signal. Absorption 
-is not characterized by a convolutive operator. Thus, its effect on the frequency content of the data is not 
-straightforwardly understood.
+For the acquisition, real-time processing and data dissemination, the SC has chosen the german SeisComP3 as the main software running in its datacenter for many reasons: "no" cost; open source; use of GNU/Linux operating system; possibility of local maintenance; participation in future developments; and framework platform to easily develop local tools.
 
 \begin{figure}[h!]
-  \includegraphics[width=8cm]{images/Filtro_pos_empilhamento.jpg}
-  \includegraphics[width=8cm]{images/Filtro1-2-25-40.jpg}
-  \includegraphics[width=8cm]{images/Filtro_PA.jpg}
- \caption[Figure 1]{\textit{a}) On top, for comparison, the resulting section after the
-step by step deconvolution and (pos-stack) absorption compensation; \textit{b}) in the middle, 
-the section shown on top after a 1-2-25-40 Hz trapezoidal bandpass filter;  \textit{c}) Below, the
-same window of the stacked section after (pre-stack) jointly compensating for absorption and 
-deconvolution. Gain was applied to allow for comparison of signal to noise ratio.}
+\centering
+\includegraphics[width=7.8cm]{images/rsb.jpg}
+\caption[Figure 1]{Actual deployment status of the brazilian seismological network: red triangles are stations from BRASIS. Blue triangles are stations deployed by the Rio Grande do Norte University (UFRN). The yellow triangles along the coast are stations from the National Observatory (ON). The University od Brasilia (UnB) deployed the stations represented by the green triangles. }
 \end{figure}
 
-Figure 1\textit{c}) has a much more clear definition of the geological structures, without 
-the undesired change in the high to low frequency content ratio. The inversion of the combined operator
-has done a more adequate treatment of the unstable side of the combined operator, resulting in a more balanced
-signal to noise ratio in different frequency ranges. 
+Since May 2011 to April 2013, the BRASIS network has detected about 600 events with magnitudes between 4 and 7.2, most of them at the Andean region. 75\% of the events with magnitudes 5+ were located with less than 15km error when compared with the NEIC catalog. The automated magnitudes were also computed with an error of  $ \pm $ 0.35. Regional brazilian earthquakes were not located automatically because a magnitude 4+ did not occur yet. However, smaller events are being detected manually. The SC also mantains a catalog of the earthquakes that occur in Brazil. This catalog is open and accessable through the SC website at \textit{www.sismo.iag.usp.br/portal}, where one can also find information about the stations and retrieve its data. Furthermore,  a \textit {GeoServer} instance is running at the SC's datacenter, offering both station and earthquake catalog in raster formats, at \textit{www.sismo.iag.usp.br/geoserver}.
 
-The SVD parametrization was the same in all figures. Since absorption compensation alter the 
-level of amplitudes, gain was applied for better visualization of the signal to noise ratio.
+\section{Data Life Cycle at the Seismological Center}
 
-To have an idea of the stability of the joint compensation for absorption and deconvolution
-in pre-stack data, figure 2 shows a shot \textit{a}) before and \textit{b}) after 
-compensation. It is clear that the usual amplification of high frequency noise is not 
-present. In fact, the frequency content of compensated data is only slightly shifted as 
-compared to the original shot. Although limitations on the spectrum was not desired, this 
-result is a consequence of frequency content limitations on the pulse used for the combined 
-inversion. On one hand, the proposed technique did not improved our estimate of the higher frequency 
-content of reflectivity remarkably. However, on the other hand, we have achieved the 
-best possible equalization of the spectrum without the inconvenient trial and error 
-time consuming process of handling the noise amplifyied through absorption compensation.
+Beyond the characteristics of the seismological data acquisition, Figure 2 shows that there are basically two ways to add data to the system: in real-time or with archives brought by a station technician. The data management plan at the SC intended to handle internally all the waveform acquired with the same procedures to facilitate its access and reuse.
 
 \begin{figure}[h!]
-  \includegraphics[width=4cm]{images/tiro_original.png}
- \includegraphics[width=4cm]{images/Filtro_tiro.png}
- \caption[Figure 2]{\textit{a}) Left, a shot record before deconvolution and right, 
-  \textit{b}) the same shot after jointly compensating for absorption and deconvolution. Gain was 
-  applied to allow for appraisal of the signal to noise ratio.}
+\centering
+\includegraphics[width=7cm]{images/dataFlow.png}
+\caption[Figure 2]{Data processing model at the Seismological Center. This diagram shows which skills a data center need to have to properly handle its data. It shows data exchange, and internal data flow and processes.}
 \end{figure}
 
-\section{Summary, Comments and Conclusions}
+The steps of a waveform life cycle (Figure 3) can be separated in three different phases: acquisition, curation and preservation, as described below:
 
-This paper discusses the advantages of treating deconvolution and inelastic absorption
-as a unique process. Essentially, the inversion of a unique, combined process brings
-more stability and makes it easier to achieve an optimum in terms of signal to noise
-ratio even in pre-stack data. As a consequence, it is expected an improved resolution
-in pre-stack processing tools like velocity analysis as compared to the two step current 
-practice. Benefits in resolution are limited to the seismic pulse frequency band as well 
-as to the extent absorption altered earth reflectivity as usual.
+\textbf{a) \textit{Acquisition}}
+\begin{itemize}
+\item \textit{Deployment:} from site selection to sensor installation procedures, all the cares of generation of good quality data;
+\item\textit{Station Metadata:} made with factory's instrument data sheet in a proprietary format used to configure the instrument and to remove its response at the waveform processing step;
+\end{itemize}
 
-The advantage of jointly inverting for convolution and absorption comes
-from a more adequate design of a pseudo-inverse based on a real estimate
-of a common (quasi) null space. 
+\textbf{b) \textit{Curation}}
+\begin{itemize}
+\item \textit{Ingestion:} waveform data arrives at the datacenter in a propetary format. Then, it is extracted wth acquisition logs and converted to an open format (SEED). The station metadata is added at this step, to describe it in the same open standard (dataless SEED format;
+\item \textit{Quality Control:} acquisition logs like GPS lock timing, data gaps and noise evaluation (power spectral density plots) are made to garantee the quality of the acquired data;
+\item \textit{Data Dissemination and Access:} both miniSEED and datalessSEED archives are served for free access in real-time or on demand by the SC's SEEDLink and ArcLink Serves at \textit{seisrequest.iag.usp.br} (port 18000 for SEEDLink and 18001 for ArcLink);
+\item \textit{Real Time Processing:} the SeisComP3 system processes all the data that is being acquired in real-time. When an event is detected, the system runs its automated locators and magnitude calculators. The product, an event in the QuakeML format is stored at the database with its associated objects: picks, phase arrivals, origins, agency code, etc;
+\item \textit{Revision:} later, an analyst review each event detection to refine its location;
+\end{itemize}
 
-The stability has consequences in reducing processing cycle time and management even if a relatively 
-more expensive inversion approach like SVD is used. The benefits of stability would be present if 
-another, less expensive, algorithm for inversion is used. Thus, it is expected that a more refined
-cycle of analysis with, many tests for defining $Q$, $f_0$, and velocities becomes less time 
-consuming and affordable.
+\textbf{c) \textit{Preservation}}
+\begin{itemize}
+\item \textit{Hardware:} all the systems at the SC's datacenter run on hardware prepared for redundancy;
+\item\textit{Storage:} all the SC's data products are stored in a RAID 5 dedicated storage;
+\item\textit{Long Term:} all the SC's data products are open and are also being stored and the IRIS DMC servers;
+\end{itemize}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[height=10cm]{images/dataSteps.png}
+\caption[Figure 3]{A simplified waveform life cycle. The colored artifacts are consider the most important by the major part of the community}
+\end{figure}
+
+\section{Open Questions, Next Steps}
+
+Seismologists together with students when are working on their researches uses and also generates a lot of seismological objects like picks, amplitude readings, earth models, filtered seismograms, dispersion curves and tomographic maps among others. When the work in cooperation is needed in a distributed way or not, the problem to describe who did what is still open and the best solution is not easy to find. 
+
+Figure 4 illustrates a schematic representation of the data infrastructure installed at the SC's datacenter. However, some questions were not answered yet.
+
+Which is the best way to care about all of these seismological \textbf {related and distributed data}? How to manage all these processes and how to catch the \textbf {provenance} of these objects correctly? \textbf {Semantic} technology could be useful for this task? If so, how to implement semantic issues on this case study? In this context, does it make any sense to move towards a \textbf {virtual observatory} concept?
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=8cm]{images/datacenter.png}
+\caption[Figure 4]{Schematic infrasctructure representation with basically four distinct layers of the data flow, described from bottom to top. First layer represents data acquisition by two mainly services. The second layer is where seismological data (waveforms and associated data) is stored. Seismological applications runs at the third layer, where students and seismologist can interact with the data. The fourth and last layer is about data dissemination, where the SC's products are offered to the community.}
+\end{figure}
+
+\section{Comments and Conclusions}
+
+The culture of do not plan to make a properly curation of acquired data and preserve it to future reuse, contributes to make the management task a little harder. 
+
+In Brazil, funding agencies do not ask for data management plans, leaving the responsability to each researcher.The cost of maintaining and preserving data is high and is often not taken into account when projects are signed. Frequently there is no budget nor people to do this job.
+
+The BRASIS project was the very responsible for changing the SC's efforts to data management issues. Despite the difficulties, the SC is doing the best it can to match and comply the best practices in seismological data management as adopted by the international community.
+
+To manage data correctly is not an easy task. Management plans made earlier would greatly help to estimate what is needed for a proper treatment and preservation of the acquired data and also the cost involved. A lot of problems emerges from the fact of have no plan.
+
+To broaden the discussion of data management plans among other institutions and researches is essential to join efforts and reduce costs. The concept of a Virtual Observatory emerging from this whole data management, providing well known and new services could be a horizon to follow.  
+
 
 \section{References}
 
-Golub, G. H., Kahan, W., 1965, Calculating the singular values and pseudo-inverse of a matrix:
-Journal of the Society for Industrial and Applied Mathematics, Series B, Numerical Analysis 2 (2), p 205-224.
+Barsh, R. (2009) Web-based technology for storage and pro- cessing of multi-component data in seismology. First steps towards a new design, PhD thesis, Ludwig Maximilians Universitat Munchen, Munich, Germany, 126 pp.
 
-Futtermann, W. F., 1962, Dispersive body waves: Journal of Geophysical Research, 67, No. 13.
+Percivall, G. (2010). The application of open standards to en- hance the interoperability of geoscience information, In- ternational Journal of Digital Earth, 3 (S1), 14-30.
+
+Pirchiner, M ; Collaço, B. B. ; Calhau, J. ; Assumpção, M. S. ; Dourado, J. C. . BRAzilian Seismographic Integrated Systems (BRASIS): infrastructure and data management. Annals of Geophysics, v. 54, p. 17-22, 2011.
+
+Schorlemmer, D., A. Wyss, S. Maraini, S. Wiemer and M. Baer (2004). QuakeML - an XML schema for seismology, ORFEUS Newsletter, 6 (2); http://www.orfeus-eu.org/Organiza- tion/Newsletter/vol6no2/quakeml.shtml (last accessed 7 March 2011).
+
+SEED Manual (2010). SEED Reference Manual, SEED Format Version 2.4, May 2010, IRIS, 212 pp.; 
+
+SeisComP3.org (2011). SeisComP 3 documentation; www.seiscomp3.org/wiki/doc (last accessed 20 April 2013).
+
+
 
 \section{Acknowledgments}
 
-We would like to thank PETROBRAS for permission to publish this work.
+We would like to thank PETROBRAS for funding the BRASIS Project and also the SC's staff, specially Marcelo Assumpção for the support and trust.
 
 \end{document}
